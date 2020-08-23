@@ -4,8 +4,9 @@ const mongoose = require('mongoose');
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
-const logRoutes = require("./routes/log");
-const userRoutes = require("./routes/user");
+const policeofficerRoutes = require("./routes/policeofficer");
+const reporterRoutes = require("./routes/reporter");
+const reportRoutes = require("./routes/report");
 
 require('dotenv').config();
 // import mongoose
@@ -28,8 +29,9 @@ app.use(cookieParser());
 
 // routes middleware
 
-app.use("/api", userRoutes);
-app.use("/api", logRoutes);
+app.use("/api", policeofficerRoutes);
+app.use("/api", reporterRoutes);
+app.use("/api", reportRoutes);
 
 const port = process.env.PORT || 8001;
 
