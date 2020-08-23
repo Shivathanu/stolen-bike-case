@@ -4,17 +4,11 @@ const mongoose = require('mongoose');
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
-
-
+const logRoutes = require("./routes/log");
+const userRoutes = require("./routes/user");
 
 require('dotenv').config();
 // import mongoose
-
-//import routes
-const categoryRoutes = require("./routes/category");
-const keywordRoutes = require("./routes/keyword");
-
-
 
 //db connection
 mongoose.connect(process.env.MONGO_URI, {
@@ -34,9 +28,8 @@ app.use(cookieParser());
 
 // routes middleware
 
-app.use("/api", categoryRoutes);
-app.use("/api", keywordRoutes);
-
+app.use("/api", userRoutes);
+app.use("/api", logRoutes);
 
 const port = process.env.PORT || 8001;
 
